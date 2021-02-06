@@ -1,22 +1,22 @@
-<script language="vbscript" runat="server">
+<script language="JavaScript" runat="server">
 
-' place all global configuration here
-Sub Application_OnStart
-  Application("visitors") = 0
-  Application("rootURL") = "/learn-classic-asp"
-  Application("connectionString") = "Provider=SQLOLEDB.1;Data Source=USSER-PC\SQLEXPRESS;Database=learnasp;User Id=sa;Password=adminadmin"
-End Sub
+//place all global configuration here
+function Application_OnStart() {
+  Application("visitors") = 0;
+  Application("rootURL") = "/asp";
+  Application("connectionString") = "Provider=SQLOLEDB.1;Data Source=USSER-PC\SQLEXPRESS;Database=learnasp;User Id=sa;Password=adminadmin";
+}
 
-Sub Session_OnStart
-  Application.Lock
-  Application("visitors") = Application("visitors") + 1
-  Application.UnLock
-End Sub
+function Session_OnStart() {
+  Application.Lock();
+  Application("visitors") = Application("visitors") + 1;
+  Application.UnLock();
+}
 
-Sub Session_OnEnd
-  Application.Lock
-  Application("visitors") = Application("visitors") - 1
-  Application.UnLock
-End Sub
+function Session_OnEnd() {
+  Application.Lock();
+  Application("visitors") = Application("visitors") - 1;
+  Application.UnLock();
+}
 
 </script>

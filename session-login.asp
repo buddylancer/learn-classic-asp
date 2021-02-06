@@ -1,56 +1,51 @@
-<% Option Explicit %>
-
 <%
-  Dim username, password, submit
-  Dim message
+	var username, password, submit;
+	var message = "";
 
-  message = ""
-  username = Request.Form("username")
-  password = Request.Form("password")
-  submit = Request.Form("submit")
+	username = Request.Form("username");
+	password = Request.Form("password");
+	submit = Request.Form("submit");
 
-  If submit = "Logout" Then
-    ' remove session
-    Session("currentUser") = ""
-  ElseIf submit = "Login" Then
-    If username = "" Then
-      message = message & "username is required <br/>"
-    End If
-    If password = "" Then
-      message = message & "password is required <br/>"
-    End If
+	if (submit == "Logout") {
+		// remove session
+		Session("currentUser") = "";
+	}
+	else if (submit == "Login") {
+		if (username == "")
+			message = message + "username is required <br/>";
+		if (password == "")
+			message = message + "password is required <br/>";
 
-    ' username and password = "user"
-    If username <> "user" and password <> "user" Then
-      message = message & "username or password is wrong"
-    Else
-      Session("currentUser") = username
-    End If
-  End If
+		// username and password = "user"
+		if (username(1) != "user" || password(1) != "user")
+			message = message + "username or password is wrong";
+		else
+			Session("currentUser") = username(1);
+	}
 %>
 
 <!--#include file="layouts/header.asp"-->
 
-  <h1>Login</h1>
+	<h1>Login</h1>
 
-  <% If Session ("currentUser") = "" Then  %>
-    <form method="POST" action="session-login.asp">
-      Username<br/>
-      <input type="text" name="username" placeholder="username"/> <br/>
-      Password<br/>
-      <input type="password" name="password" placeholder="password"/> <br/>
-      <input type="submit" name="submit" value="Login" />
-      <br/>
-      <i><%= message %></i>
-    </form>
-  <% ElseIf Session("currentUser") <> "" Then %>
-    <form method="POST" action="session-login.asp">
-      Hello <%= Session("currentUser") %>
-      <input type="submit" name="submit" value="Logout" />
-    </form>
-  <% End If %>
+	<% if (Session("currentUser") == "") {  %>
+		<form method="POST" action="session-login.asp">
+		  Username<br/>
+		  <input type="text" name="username" placeholder="username"/> <br/>
+		  Password<br/>
+		  <input type="password" name="password" placeholder="password"/> <br/>
+		  <input type="submit" name="submit" value="Login" />
+		  <br/>
+		  <i><%= message %></i>
+		</form>
+	<% } else if (Session("currentUser") != "") { %>
+		<form method="POST" action="session-login.asp">
+		  Hello <%= Session("currentUser") %>
+		  <input type="submit" name="submit" value="Logout" />
+		</form>
+	<% } %>
 
-  
+	
 
 <!--#include file="layouts/footer.asp"-->
 

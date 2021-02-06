@@ -2,45 +2,32 @@
 
 <h1>Loops</h1>
 <%
-  Dim index
-
-  For index=0 to 5
-    Response.write "<p>This is my first text<p>"
-  Next
+	for (var index = 0; index <= 5; index++)
+		Response.write("<p>This is my first text<p>");
 %>
-<hr/>
+<hr />
 <%
-  Dim index2
-
-  For index2=0 to 5 step 2
-    Response.write "<p>This is my second text<p>"
-  Next
+	for (var index2 = 0; index2 <= 5; index2 += 2)
+		Response.write("<p>This is my second text<p>");
 %>
-<hr/>
+<hr />
 <%
-  Dim index3
-
-  For index3=0 to 5
-    Response.write "<p>Current text index is "&index3&"<p>"
-  Next
+	for (var index3 = 0; index3 <= 5; index3++)
+		Response.write("<p>Current text index is " + index3 + "<p>");
 %>
-<hr/>
+<hr />
 <%
-  Dim index4
-  index4 = 0
-  Do Until index4 = 6
-    Response.write "<p>Current text index is "&index4&"<p>"
-    index4 = index4 + 1
-  Loop
+	var index4 = 0;
+	do {
+		Response.write("<p>Current text index is " + index4 + "<p>");
+		index4 = index4 + 1;
+	} while (index4 != 6);
 %>
-<hr/>
+<hr />
 <%
-  Dim row, col
-  For row=0 to 1
-    For col=0 to 1
-      Response.write "<p>Table row:"&row&" col:"&col&"<p>"
-    Next
-  Next
+	for (var row = 0; row <= 1; row++)
+		for (var col = 0; col <= 1; col++)
+			Response.write("<p>Table row:" + row + " col:" + col + "<p>");
 %>
 
 <!--#include file="layouts/footer.asp"-->

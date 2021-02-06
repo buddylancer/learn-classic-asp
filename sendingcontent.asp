@@ -2,16 +2,16 @@
 
 <h1>Comment</h1>
 <%
-  username = "armando"
-  email = "armando@mail.com"
-  
-  ' to print variable, you can use 
-  ' < % Response.write variableName % >
-  ' or
-  ' < %= variableName % >
+	username = "armando"
+	email = "armando@mail.com"
+	
+	// to print variable, you can use 
+	// < % Response.write variableName % >
+	// or
+	// < %= variableName % >
 %>
 
-<% Response.write username %>
+<% Response.write (username); %>
 <br/>
 <%= username %>
 

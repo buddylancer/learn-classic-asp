@@ -2,21 +2,21 @@
 
 <h1>Conditional</h1>
 <%
-Dim temperature
-Dim message
-temperature = 25
-If number <15 Then
-  message = "<p>Snow will come.</p>"
-ElseIf number >=15 AND number < 25 Then
-  message = "<p>Nice wather to have a picnic</p>"
-ElseIf number >=25 AND number < 35 Then
-  message = "<p>Summer is coming</p>"
-Else
-  message "<p>Woah! It's very hot!</p>"
-End If
+var temperature = 25;
+var message = "";
 
-Response.Write "temperature "&temperature
-Response.Write message
+
+if (temperature < 15)
+	message = "<p>Snow will come.</p>";
+else if (temperature >= 15 && temperature < 25)
+	message = "<p>Nice weather to have a picnic</p>";
+else if (temperature >= 25 && temperature < 35)
+	message = "<p>Summer is coming</p>";
+else
+	message = "<p>Woah! It's very hot!</p>";
+
+Response.Write("temperature " + temperature);
+Response.Write(message);
 %>
 
 <!--#include file="layouts/footer.asp"-->
